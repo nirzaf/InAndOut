@@ -1,0 +1,49 @@
+﻿@model IEnumerable<InAndOut.Models.ExpenseType>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Expenses Type List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="ExpenseType" asp-action="Create" class="btn btn-primary">Create new Expense Type</a>
+        </div>
+    </div>
+    <br />
+
+    @if(Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <thead>
+                <tr>
+                    <th>
+                        Expense
+                    </th>
+                    <th>
+                        Changes
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var obj in Model)
+                {
+                <tr>
+                    <td width="35%">@obj.Name</td>
+                    <td width="30%">
+                        <div class="w-100 btn-group" role="group">
+                            <a asp-controller="ExpenseType asp-action="Update" asp-route-Id="@obj.Id" class="btn btn-primary mx-1">Update</a>
+                            <a asp-controller="ExpenseType" asp-action="DeletePost" asp-route-Id="@obj.Id" class="btn btn-danger mx-1">Delete</a>
+                        </div>
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table> 
+    }
+    else
+    {
+        <p>No items created yet</p>
+    }
+
+</div>
+
