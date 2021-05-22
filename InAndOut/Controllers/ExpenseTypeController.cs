@@ -43,24 +43,28 @@ namespace InAndOut.Controllers
                 return RedirectToAction("Index");
             }
             return View(obj);
+           
         }
 
-        // GET-Delete
+
+        // GET Delete
         public IActionResult Delete(int? id)
         {
-            if(id == null || id == 0)
+           
+            if (id == null || id==0)
             {
                 return NotFound();
             }
             var obj = _db.ExpenseTypes.Find(id);
-            if (obj == null)
+            if(obj == null)
             {
                 return NotFound();
             }
             return View(obj);
+
         }
 
-        // POST-Delete
+        // POST Delete
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult DeletePost(int? id)
@@ -70,14 +74,17 @@ namespace InAndOut.Controllers
             {
                 return NotFound();
             }
+           
             _db.ExpenseTypes.Remove(obj);
             _db.SaveChanges();
             return RedirectToAction("Index");
+
         }
 
-        // GET-Update
+        // GET Update
         public IActionResult Update(int? id)
         {
+
             if (id == null || id == 0)
             {
                 return NotFound();
@@ -88,8 +95,10 @@ namespace InAndOut.Controllers
                 return NotFound();
             }
             return View(obj);
+
         }
-        // POST-Update
+
+        // POST UPDATE
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Update(ExpenseType obj)
@@ -101,6 +110,7 @@ namespace InAndOut.Controllers
                 return RedirectToAction("Index");
             }
             return View(obj);
+
         }
     }
 }
